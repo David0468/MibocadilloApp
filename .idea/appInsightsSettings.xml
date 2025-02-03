@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.mibocadilloapp" />
+                  <option name="mobileSdkAppId" value="1:526609073496:android:e2469b66d2b420b15c912d" />
+                  <option name="projectId" value="mibocata-a7f7c" />
+                  <option name="projectNumber" value="526609073496" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

@@ -37,6 +37,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -44,8 +47,8 @@ dependencies {
     runtimeOnly("androidx.room:room-runtime:2.6.1")
 
     // Navigation Component
-    runtimeOnly("androidx.navigation:navigation-fragment:2.8.6")
-    runtimeOnly("androidx.navigation:navigation-ui:2.8.6")
+    runtimeOnly("androidx.navigation:navigation-fragment-ktx:2.8.6")
+    runtimeOnly("androidx.navigation:navigation-ui-ktx:2.8.6")
 
     // ViewModel y LiveData
     runtimeOnly("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
@@ -58,9 +61,14 @@ dependencies {
     // RecyclerView
     runtimeOnly("androidx.recyclerview:recyclerview:1.4.0")
 
+    // Inicio Sesion Google
+    implementation("com.google.android.gms:play-services-auth:21.3.0")
+
     // FireBase
     implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
     implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth:23.1.0")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
