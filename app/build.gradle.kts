@@ -43,20 +43,29 @@ android {
 }
 
 dependencies {
+    // nav_graph.xml dependencies
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+
     // Room
     runtimeOnly("androidx.room:room-runtime:2.6.1")
+    runtimeOnly("androidx.room:room-ktx:2.6.1")
 
     // Navigation Component
     runtimeOnly("androidx.navigation:navigation-fragment-ktx:2.8.6")
     runtimeOnly("androidx.navigation:navigation-ui-ktx:2.8.6")
 
     // ViewModel y LiveData
+    runtimeOnly("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
     runtimeOnly("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
     runtimeOnly("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
 
     // Kotlinx Coroutines
-    runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")
     runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
+    runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")
 
     // RecyclerView
     runtimeOnly("androidx.recyclerview:recyclerview:1.4.0")
@@ -68,6 +77,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth:23.1.0")
+    implementation("com.google.firebase:firebase-firestore:25.1.1")
 
 
     implementation(libs.androidx.core.ktx)

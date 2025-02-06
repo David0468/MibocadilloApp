@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "526609073496",
+    "firebase_url": "https://mibocata-a7f7c-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "mibocata-a7f7c",
     "storage_bucket": "mibocata-a7f7c.firebasestorage.app"
   },
@@ -12,7 +13,12 @@
           "package_name": "com.example.mibocadilloapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "526609073496-hutj8p01ph1q2onn9l6s041blm43cfv8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBuxsJyDCEZOM4OddpCISya2HCmJ_wgOlY"
@@ -20,7 +26,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526609073496-hutj8p01ph1q2onn9l6s041blm43cfv8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
