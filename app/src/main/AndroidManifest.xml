@@ -13,14 +13,10 @@
         android:theme="@style/Theme.MiBocadilloApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.alumno.historial.Historial"
+            android:name=".ui.alumno.BottomNavManager"
             android:exported="false" />
         <activity
-            android:name=".ui.alumno.perfil.Perfil"
-            android:exported="false"
-            android:label="@string/title_activity_perfil" />
-        <activity
-            android:name=".ui.alumno.seleccion_bocadillo.SeleccionBocadillo"
+            android:name=".ui.alumno.seleccion_bocadillo.SeleccionBocadillos"
             android:exported="false"
             android:label="@string/title_activity_seleccion_bocadillo" />
         <activity

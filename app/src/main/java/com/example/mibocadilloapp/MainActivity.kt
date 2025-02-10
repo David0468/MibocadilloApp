@@ -1,15 +1,12 @@
 package com.example.mibocadilloapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import android.content.Intent
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.mibocadilloapp.ui.alumno.seleccion_bocadillo.SeleccionBocadillo
+import com.example.mibocadilloapp.ui.alumno.BottomNavManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -107,7 +104,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun irASeleccionBocadillo() {
-        val intent = Intent(this, SeleccionBocadillo::class.java)
+        val intent = Intent(this, BottomNavManager::class.java)
         startActivity(intent)
         finish()
     }
