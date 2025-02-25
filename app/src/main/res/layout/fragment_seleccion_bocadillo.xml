@@ -5,52 +5,223 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/paredblanca">
+    android:gravity="center"
+    android:background="@drawable/paredblanca"
+    android:padding="16dp">
 
-    <!-- Contenido Principal -->
-    <FrameLayout
-        android:id="@+id/contenedor_fragmento"
+    <!-- Título -->
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MI BOCATA"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/green"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Subtítulo -->
+    <TextView
+        android:id="@+id/txtSubtitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecciona tu bocadillo del día"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Contenedor de los bocadillos -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="24dp">
+        <!-- Bocadillo Frío -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnBocadilloFrio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@color/blue"
+            android:layout_marginEnd="8dp"
+            android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Selecciona tu bocadillo"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginBottom="24dp"/>
-
-            <Button
-                android:id="@+id/btnBocadilloFrio"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Bocadillo Frío"
-                android:textSize="18sp"
-                android:backgroundTint="@color/blue"
-                android:textColor="@android:color/white"
-                android:padding="16dp"
-                android:layout_marginBottom="16dp"/>
+                android:layout_height="213dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnBocadilloCaliente"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Bocadillo Frío"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Nombre del Bocadillo -->
+                <TextView
+                    android:id="@+id/txtNombreFrio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Nombre del Bocadillo"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <!-- Ingredientes (Texto Fijo) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ingredientes:"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Ingredientes (Texto Dinámico) -->
+                <TextView
+                    android:id="@+id/txtIngredientesFrio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Cargando..."
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <!-- Alérgenos (Texto Fijo) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alérgenos:"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Alérgenos (Texto Dinámico) -->
+                <TextView
+                    android:id="@+id/txtAlergenosFrio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Cargando..."
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnSeleccionarFrio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/white"
+                    android:text="Seleccionar"
+                    android:textColor="@color/blue" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Bocadillo Caliente -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnBocadilloCaliente"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@color/red"
+            android:layout_marginStart="8dp"
+            android:padding="16dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Bocadillo Caliente"
-                android:textSize="18sp"
-                android:backgroundTint="@color/red"
-                android:textColor="@android:color/white"
-                android:padding="16dp"/>
-        </LinearLayout>
-    </FrameLayout>
+                android:layout_height="212dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Bocadillo Caliente"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <!-- Nombre del Bocadillo -->
+                <TextView
+                    android:id="@+id/txtNombreCaliente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Nombre del Bocadillo"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <!-- Ingredientes (Texto Fijo) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ingredientes:"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Ingredientes (Texto Dinámico) -->
+                <TextView
+                    android:id="@+id/txtIngredientesCaliente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Cargando..."
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <!-- Alérgenos (Texto Fijo) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alérgenos:"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Alérgenos (Texto Dinámico) -->
+                <TextView
+                    android:id="@+id/txtAlergenosCaliente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Cargando..."
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnSeleccionarCaliente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/white"
+                    android:text="Seleccionar"
+                    android:textColor="@color/red" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <!-- Botón de Cancelar Pedido -->
+    <Button
+        android:id="@+id/btnCancelarPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancelar Pedido"
+        android:backgroundTint="@color/red"
+        android:textColor="@android:color/white"
+        android:padding="12dp"
+        android:layout_marginTop="16dp"/>
 </LinearLayout>

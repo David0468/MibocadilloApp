@@ -42,7 +42,7 @@ class PerfilFragment : Fragment() {
 
     private fun obtenerNombreUsuario(email: String, txtNombre: TextView) {
         val db = FirebaseFirestore.getInstance()
-        db.collection("alumnos").document(email).get()
+        db.collection("usuarios").document(email).get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
                     val nombre = document.getString("nombre")

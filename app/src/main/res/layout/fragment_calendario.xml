@@ -5,18 +5,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/paredblanca">
+    android:background="@drawable/paredblanca"
+    android:padding="16dp">
 
-    <FrameLayout
-        android:id="@+id/contenedor_fragmento"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+    <!-- Sección superior con el logo -->
+    <LinearLayout
+        android:layout_width="382dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="end"
+        android:orientation="horizontal">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerCalendario"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:padding="16dp"/>
-    </FrameLayout>
+            android:src="@drawable/logomibocata" />
+    </LinearLayout>
+
+    <!-- Texto "PARA MAÑANA:" -->
+    <TextView
+        android:id="@+id/txtParaManana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PARA MAÑANA:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Contenedor de bocadillos para mañana -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <!-- Bocadillo Frío -->
+        <LinearLayout
+            android:id="@+id/cardBocadilloFrio"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:layout_marginEnd="8dp">
+
+            <TextView
+                android:id="@+id/txtBocadilloFrioManana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BocadilloFrio"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Bocadillo Caliente -->
+        <LinearLayout
+            android:id="@+id/cardBocadilloCaliente"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@color/red"
+            android:gravity="center"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/txtBocadilloCalienteManana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BocadilloCaliente"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Sección "ESTA SEMANA:" -->
+    <TextView
+        android:id="@+id/txtEstaSemana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ESTA SEMANA:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Línea separadora -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Lista de pedidos en RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCalendario"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"/>
 </LinearLayout>

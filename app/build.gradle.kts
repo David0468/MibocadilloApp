@@ -55,8 +55,8 @@ dependencies {
     runtimeOnly("androidx.room:room-ktx:2.6.1")
 
     // Navigation Component
-    runtimeOnly("androidx.navigation:navigation-fragment-ktx:2.8.6")
-    runtimeOnly("androidx.navigation:navigation-ui-ktx:2.8.6")
+    runtimeOnly("androidx.navigation:navigation-fragment-ktx:2.8.7")
+    runtimeOnly("androidx.navigation:navigation-ui-ktx:2.8.7")
 
     // ViewModel y LiveData
     runtimeOnly("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")

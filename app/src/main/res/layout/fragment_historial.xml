@@ -5,18 +5,136 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/paredblanca">
+    android:background="@drawable/paredblanca"
+    android:padding="16dp">
 
-    <FrameLayout
-        android:id="@+id/contenedor_fragmento"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+    <!-- Sección de Total Mensual y Logo -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="87dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerHistorial"
-            android:layout_width="match_parent"
+        <!-- Total Mensual (Izquierda) -->
+        <LinearLayout
+            android:layout_width="292dp"
             android:layout_height="match_parent"
-            android:padding="16dp"/>
-    </FrameLayout>
+            android:layout_weight="1"
+            android:gravity="start"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtTotalMensual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15€"
+                android:textColor="@android:color/black"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TOTAL MENSUAL"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Logo (Derecha) -->
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:src="@drawable/logomibocata" />
+    </LinearLayout>
+
+
+    <!-- Tarjetas de Conteo de Bocadillos -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <!-- Bocadillos Fríos -->
+        <LinearLayout
+            android:id="@+id/cardBocadillosFrio"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:layout_marginEnd="8dp">
+
+            <TextView
+                android:id="@+id/txtBocadillosFrio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+
+        <!-- Bocadillos Calientes -->
+        <LinearLayout
+            android:id="@+id/cardBocadillosCaliente"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@color/red"
+            android:gravity="center"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/txtBocadillosCaliente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Sección de Filtros alineada a la derecha -->
+    <TextView
+        android:id="@+id/txtFiltros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FILTROS"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/darker_gray"
+        android:gravity="end"
+        android:layout_marginBottom="4dp"/>
+
+    <!-- Sección Historial -->
+    <TextView
+        android:id="@+id/txtHistorialTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HISTÓRICO DE BOCADILLOS"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Línea separadora -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Lista de pedidos en RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHistorial"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"/>
 </LinearLayout>

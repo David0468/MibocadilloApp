@@ -3,6 +3,7 @@ package com.example.mibocadilloapp
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -60,48 +61,38 @@ class MainActivity : AppCompatActivity() {
         val db = Firebase.firestore
         val email = user.email ?: return
 
-        // Buscar en la colección correspondiente según el rol
-        db.collection("alumnos").document(email).get()
+        // 🔹 Buscar en la colección unificada "usuarios"
+        db.collection("usuarios").document(email).get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-                    // Usuario encontrado en la colección de alumnos
-                    Toast.makeText(this, "Bienvenido, Alumno", Toast.LENGTH_SHORT).show()
-                    irASeleccionBocadillo()
+                    val tipoUsuario = document.getString("tipo_usuario")
+
+                    when (tipoUsuario) {
+                        "alumno" -> {
+                            Toast.makeText(this, "Bienvenido, Alumno", Toast.LENGTH_SHORT).show()
+                            irASeleccionBocadillo()
+                        }
+                        "cocina" -> {
+                            Toast.makeText(this, "Bienvenido, Cocina", Toast.LENGTH_SHORT).show()
+                            irASeleccionBocadillo()
+                        }
+                        "admin" -> {
+                            Toast.makeText(this, "Bienvenido, Administrador", Toast.LENGTH_SHORT).show()
+                            irASeleccionBocadillo()
+                        }
+                        else -> {
+                            Toast.makeText(this, "Tipo de usuario no reconocido", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 } else {
-                    // Si no se encuentra en alumnos, verificar en la colección de cocina
-                    db.collection("cocina").document(email).get()
-                        .addOnSuccessListener { document ->
-                            if (document.exists()) {
-                                // Usuario encontrado en la colección de cocina
-                                Toast.makeText(this, "Bienvenido, Cocina", Toast.LENGTH_SHORT).show()
-                                // Aquí puedes redirigir a la pantalla de cocina si es necesario
-                            } else {
-                                // Si no se encuentra en cocina, verificar en administradores
-                                db.collection("administradores").document(email).get()
-                                    .addOnSuccessListener { document ->
-                                        if (document.exists()) {
-                                            // Usuario encontrado en la colección de administradores
-                                            Toast.makeText(this, "Bienvenido, Administrador", Toast.LENGTH_SHORT).show()
-                                            // Aquí puedes redirigir a la pantalla de administración si es necesario
-                                        } else {
-                                            // Si no existe en ninguna de las colecciones
-                                            Toast.makeText(this, "Usuario no encontrado en ninguna colección", Toast.LENGTH_SHORT).show()
-                                        }
-                                    }
-                                    .addOnFailureListener {
-                                        Toast.makeText(this, "Error al verificar el administrador", Toast.LENGTH_SHORT).show()
-                                    }
-                            }
-                        }
-                        .addOnFailureListener {
-                            Toast.makeText(this, "Error al verificar el usuario en cocina", Toast.LENGTH_SHORT).show()
-                        }
+                    Toast.makeText(this, "Usuario no encontrado en la base de datos", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Error al verificar el usuario", Toast.LENGTH_SHORT).show()
             }
     }
+
 
     private fun irASeleccionBocadillo() {
         val intent = Intent(this, BottomNavManager::class.java)

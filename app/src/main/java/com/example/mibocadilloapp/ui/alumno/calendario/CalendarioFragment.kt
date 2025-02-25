@@ -1,60 +1,103 @@
 package com.example.mibocadilloapp.ui.alumno.calendario
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mibocadilloapp.R
+import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CalendarioFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CalendarioFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var txtBocadilloFrioManana: TextView
+    private lateinit var txtBocadilloCalienteManana: TextView
+    private lateinit var recyclerCalendario: RecyclerView
+
+    private val db = FirebaseFirestore.getInstance()
+    private lateinit var calendarioAdapter: CalendarioAdapter
+    private val listaBocadillosSemana = mutableListOf<BocadilloSemana>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calendario, container, false)
+        val view = inflater.inflate(R.layout.fragment_calendario, container, false)
+
+        // Inicializar vistas
+        txtBocadilloFrioManana = view.findViewById(R.id.txtBocadilloFrioManana)
+        txtBocadilloCalienteManana = view.findViewById(R.id.txtBocadilloCalienteManana)
+        recyclerCalendario = view.findViewById(R.id.recyclerCalendario)
+
+        // Configurar RecyclerView
+        calendarioAdapter = CalendarioAdapter(listaBocadillosSemana)
+        recyclerCalendario.layoutManager = LinearLayoutManager(context)
+        recyclerCalendario.adapter = calendarioAdapter
+
+        // Cargar bocadillos para mañana y la semana
+        cargarBocadillosParaManana()
+        cargarBocadillosDeLaSemana()
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CalendarioFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CalendarioFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun cargarBocadillosParaManana() {
+        val diaSiguiente = obtenerDiaSiguiente()
+
+        db.collection("bocadillos")
+            .whereEqualTo("dia", diaSiguiente)
+            .get()
+            .addOnSuccessListener { documentos ->
+                for (document in documentos) {
+                    val nombre = document.getString("nombre") ?: "Sin nombre"
+                    val tipo = document.getString("tipo_bocadillo") ?: ""
+
+                    if (tipo == "frio") {
+                        txtBocadilloFrioManana.text = nombre
+                    } else if (tipo == "caliente") {
+                        txtBocadilloCalienteManana.text = nombre
+                    }
                 }
             }
+            .addOnFailureListener {
+                Toast.makeText(context, "Error al cargar los bocadillos de mañana", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun cargarBocadillosDeLaSemana() {
+        db.collection("bocadillos")
+            .get()
+            .addOnSuccessListener { documentos ->
+                listaBocadillosSemana.clear()
+
+                for (document in documentos) {
+                    val nombre = document.getString("nombre") ?: "Sin nombre"
+                    val tipo = document.getString("tipo_bocadillo") ?: "Desconocido"
+                    val dia = document.getString("dia") ?: "Día no especificado"
+                    val ingredientes = document.getString("ingredientes") ?: "Sin ingredientes"
+                    val alergenos = document.getString("alergenos") ?: "Sin alérgenos"
+
+                    val bocadillo = BocadilloSemana(nombre, tipo, dia, ingredientes, alergenos)
+                    listaBocadillosSemana.add(bocadillo)
+                }
+
+                // Actualizar la lista en el RecyclerView
+                calendarioAdapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener {
+                Toast.makeText(context, "Error al cargar los bocadillos de la semana", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun obtenerDiaSiguiente(): String {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, 1) // Suma 1 día
+        return SimpleDateFormat("EEEE", Locale("es", "ES")).format(calendar.time).lowercase()
     }
 }
