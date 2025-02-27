@@ -8,4 +8,18 @@
     <string name="default_web_client_id">526609073496-hutj8p01ph1q2onn9l6s041blm43cfv8.apps.googleusercontent.com</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="tipo_bocadillo">
+        <item>frio</item>
+        <item>caliente</item>
+    </string-array>
+
+    <string-array name="dias_semana">
+        <item>lunes</item>
+        <item>martes</item>
+        <item>miércoles</item>
+        <item>jueves</item>
+        <item>viernes</item>
+    </string-array>
+
 </resources>

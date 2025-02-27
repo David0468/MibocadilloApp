@@ -68,6 +68,7 @@ class SeleccionBocadillo : Fragment() {
 
         db.collection("bocadillos")
             .whereEqualTo("dia", diaActual)
+            .whereEqualTo("fecha_baja", "null") // Filtra solo bocadillos activos
             .get()
             .addOnSuccessListener { documentos ->
                 for (document in documentos) {
@@ -98,6 +99,7 @@ class SeleccionBocadillo : Fragment() {
                 Toast.makeText(context, "Error al cargar bocadillos", Toast.LENGTH_SHORT).show()
             }
     }
+
 
     private fun verificarPedidoExistente() {
         val usuario = auth.currentUser ?: return

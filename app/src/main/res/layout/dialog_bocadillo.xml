@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etNombreBocadillo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del Bocadillo"
+            android:inputType="textCapWords" />
+
+        <EditText
+            android:id="@+id/etIngredientesBocadillo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingredientes (separados por comas)"
+            android:inputType="textCapSentences" />
+
+        <EditText
+            android:id="@+id/etAlergenosBocadillo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alergenos (separados por comas)"
+            android:inputType="textCapSentences" />
+
+        <EditText
+            android:id="@+id/etPrecioBocadillo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Precio (€)"
+            android:inputType="numberDecimal" />
+
+        <Spinner
+            android:id="@+id/spinnerTipoBocadillo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/tipo_bocadillo" />
+
+        <Spinner
+            android:id="@+id/spinnerDia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/dias_semana" />
+
+        <Switch
+            android:id="@+id/switchActivo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bocadillo Activo"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="@drawable/paredblanca">
+
+    <!-- Sección de gestión -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="48dp"> <!-- ⬆️ Separa los botones de la sección de cierre -->
+
+        <Button
+            android:id="@+id/btnGestionBocadillos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gestionar Bocadillos"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/green"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/btnGestionAlumnos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gestionar Alumnos"
+            android:backgroundTint="@color/green"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <!-- Botón de Cerrar Sesión (Separado) -->
+    <Button
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Sesión"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="@color/red"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center_horizontal"/>
+</LinearLayout>

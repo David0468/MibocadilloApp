@@ -1,20 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_seleccion_bocadillo"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/baseline_dining_24"
         android:title="Bocadillos"/>
     <item
         android:id="@+id/nav_perfil"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/baseline_account_circle_24"
         android:title="Perfil"/>
 
     <item
         android:id="@+id/nav_calendario"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/baseline_calendar_month_24"
         android:title="Calendario"/>
 
     <item
         android:id="@+id/nav_historial"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/baseline_access_time_24"
         android:title="Historial"/>
 </menu>

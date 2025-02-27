@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.mibocadilloapp.ui.admin.AdminNavManager
 import com.example.mibocadilloapp.ui.alumno.BottomNavManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -78,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                         }
                         "admin" -> {
                             Toast.makeText(this, "Bienvenido, Administrador", Toast.LENGTH_SHORT).show()
-                            irASeleccionBocadillo()
+                            irAGestionAdministrador()
                         }
                         else -> {
                             Toast.makeText(this, "Tipo de usuario no reconocido", Toast.LENGTH_SHORT).show()
@@ -96,6 +97,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun irASeleccionBocadillo() {
         val intent = Intent(this, BottomNavManager::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun irAGestionAdministrador() {
+        val intent = Intent(this, AdminNavManager::class.java)
         startActivity(intent)
         finish()
     }

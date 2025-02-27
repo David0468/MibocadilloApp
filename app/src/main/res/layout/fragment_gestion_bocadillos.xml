@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/paredblanca"
+    android:padding="16dp">
+
+    <!-- Lista de bocadillos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerBocadillos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/fabAgregarBocadillo"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="160dp"/>
+
+    <!-- Botón para agregar bocadillo -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAgregarBocadillo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="80dp"
+        android:contentDescription="Agregar bocadillo"
+        android:src="@drawable/baseline_add_24"/>
+</RelativeLayout>
